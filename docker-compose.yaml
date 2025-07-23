@@ -14,15 +14,12 @@ services:
     image: odoo:18
     depends_on:
       - db
-    # The command key is added to initialize the database
-    command: --init base --db_user odoo --db_password "${DB_PASSWORD}" --db_host db --db_name odoo
+    # The command now uses the correct '-d' flag for the database name
+    command: --init base -d odoo --db_user odoo --db_password "${DB_PASSWORD}" --db_host db
     environment:
-      # These are still useful for other Odoo operations but not for the initial connection with the command above.
-      # You can safely remove HOST, USER, and PASSWORD if you use the command directive.
       HOST: db
       USER: odoo
       PASSWORD: "${DB_PASSWORD}"
-      # ADMIN_PASSWORD sets the master password for the database manager page
       ADMIN_PASSWORD: "${DB_PASSWORD}"
     volumes:
       - ./addons:/mnt/extra-addons
