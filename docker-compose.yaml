@@ -11,13 +11,15 @@ services:
       - db_data:/var/lib/postgresql/data
 
   odoo:
-    image: odoo:18     # bump to your Odoo version
+    image: odoo:18 # bump to your Odoo version
     depends_on:
       - db
     environment:
       HOST: db
       USER: odoo
       PASSWORD: "${DB_PASSWORD}"
+      INIT_DB: true
+      ADMIN_PASSWORD: odoosecret
     volumes:
       - ./addons:/mnt/extra-addons
     ports:
