@@ -82,7 +82,7 @@ class PosMenuAPI(http.Controller):
                     # build the image URL only if has_image is True
                     img_url = None
                     if c.get('has_image'):
-                        img_url = f"/web/image/pos.category/{c['id']}/image_128"
+                        img_url = f"/web/image/pos.category/{c['id']}/image_1024"
 
                     categories.append({
                         'id': c['id'],

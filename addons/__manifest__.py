@@ -10,6 +10,7 @@
     'depends': ['pos_restaurant', 'point_of_sale'],
     'data': [
         'views/pos_config_view.xml',
+        'views/pos_category_form.xml',
         'security/ir.model.access.csv'
     ],
     'assets': {
