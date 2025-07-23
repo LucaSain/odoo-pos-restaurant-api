@@ -1,0 +1,30 @@
+version: "3.8"
+
+services:
+  db:
+    image: postgres:14
+    environment:
+      POSTGRES_DB: odoo
+      POSTGRES_USER: odoo
+      POSTGRES_PASSWORD: "${DB_PASSWORD}"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+  odoo:
+    image: odoo:18     # bump to your Odoo version
+    depends_on:
+      - db
+    environment:
+      HOST: db
+      USER: odoo
+      PASSWORD: "${DB_PASSWORD}"
+    volumes:
+      - ./addons:/mnt/extra-addons
+    ports:
+      - "8069:8069"
+    deploy:
+      restart_policy:
+        condition: on-failure
+
+volumes:
+  db_data:
