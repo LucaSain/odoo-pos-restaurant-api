@@ -19,7 +19,7 @@ services:
       USER: odoo
       PASSWORD: "${DB_PASSWORD}"
       INIT_DB: true
-      ADMIN_PASSWORD: odoosecret
+      ADMIN_PASSWORD: "${DB_PASSWORD}"
     volumes:
       - ./addons:/mnt/extra-addons
     ports:
