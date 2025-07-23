@@ -21,7 +21,7 @@ services:
     volumes:
       - ./addons:/mnt/extra-addons
     ports:
-      - "8069:8069"
+      - "8018:8018"
     deploy:
       restart_policy:
         condition: on-failure
