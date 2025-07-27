@@ -4,9 +4,9 @@ services:
   db:
     image: postgres:14
     environment:
-      POSTGRES_DB: odoo
-      POSTGRES_USER: odoo
-      POSTGRES_PASSWORD: "${DB_PASSWORD}"
+      - POSTGRES_DB=odoo
+      - POSTGRES_USER=odoo
+      - POSTGRES_PASSWORD=${ODOO_DB_PASSWORD}
     volumes:
       - db_data:/var/lib/postgresql/data
 
@@ -14,16 +14,15 @@ services:
     image: odoo:18
     depends_on:
       - db
-    # The command now uses the correct '-d' flag for the database name
     environment:
-      HOST: db
-      USER: odoo
-      PASSWORD: "${DB_PASSWORD}"
-      # ADMIN_PASSWORD: "${DB_PASSWORD}"
+      - HOST=db
+      - USER=odoo
+      - PASSWORD=${ODOO_DB_PASSWORD}
     volumes:
       - ./addons:/mnt/extra-addons
     ports:
       - "8069:8069"
+    command: -d odoo -i base
     deploy:
       restart_policy:
         condition: on-failure
