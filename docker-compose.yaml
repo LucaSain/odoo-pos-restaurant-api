@@ -1,5 +1,3 @@
-version: "3.8"
-
 services:
   db:
     image: postgres:14
@@ -11,18 +9,20 @@ services:
       - db_data:/var/lib/postgresql/data
 
   odoo:
-    image: odoo:18
+    # build instead of image
+    build:
+      context: .
+      dockerfile: Dockerfile
     depends_on:
       - db
     environment:
       - HOST=db
       - USER=odoo
       - PASSWORD=${ODOO_DB_PASSWORD}
-    volumes:
-      - ./addons:/mnt/extra-addons
+    # no bind-mount here
     ports:
       - "8069:8069"
-    command: -d odoo -i base
+    command: -d odoo -i base --without-demo=all
     deploy:
       restart_policy:
         condition: on-failure
