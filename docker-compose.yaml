@@ -21,7 +21,7 @@ services:
       - PASSWORD=${ODOO_DB_PASSWORD}
     # no bind-mount here
     ports:
-      - "${PORT}:8069"
+      - "${ODOO_PORT}:8069"
     command: -d odoo -i base --without-demo=all
     deploy:
       restart_policy:
