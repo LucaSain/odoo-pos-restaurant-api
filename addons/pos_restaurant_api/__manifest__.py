@@ -9,15 +9,12 @@
     """,
     'depends': ['pos_restaurant', 'point_of_sale'],
     'data': [
-        'views/pos_config_view.xml',
+  
         'views/pos_category_form.xml',
+      
         'security/ir.model.access.csv'
     ],
-    'assets': {
-        'point_of_sale._assets_pos': [
-            'pos_restaurant_api/static/src/js/pos_order_api.js',
-        ],
-    },
+   
     'installable': True,
     'auto_install': False,
     'application': False,

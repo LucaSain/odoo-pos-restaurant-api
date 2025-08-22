@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template>
+    <!--Template for Kitchen order
+    stages  -->
+    <t t-name="KitchenCustomDashBoard">
+        <header>
+            <div id="kitchen_screen" class="kitchen">
+                <div class="body_wrapper">
+                    <div class="container">
+                        <div class="top_bar">
+                            <ul>
+                                <li>
+                                    <a href="#">
+                                        <div class="icon">
+                                            <svg
+                                                viewBox="0 0 10 12"
+                                                fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M9.18821 3.16036L6.73523 0.648239C6.43604 0.349181 6.01726 0.169742 5.53864 0.169742H2.00871C1.11127 0.109927 0.333496 0.887493 0.333496 1.78468V10.1584C0.333496 11.0556 1.05145 11.8332 2.00871 11.8332H7.99161C8.88907 11.8332 9.66683 11.1154 9.66683 10.1584V4.2968C9.66683 3.87811 9.48734 3.45943 9.18821 3.16036ZM3.20529 4.89494H5.00016C5.2395 4.89494 5.47879 5.07437 5.47879 5.37345C5.47879 5.67246 5.2993 5.8519 5.00016 5.8519H3.20529C2.96597 5.8519 2.72666 5.67246 2.72666 5.37345C2.72666 5.07437 2.96597 4.89494 3.20529 4.89494ZM6.79502 8.24444H3.20529C2.96597 8.24444 2.72666 8.06501 2.72666 7.76593C2.72666 7.46686 2.90615 7.28742 3.20529 7.28742H6.79502C7.03436 7.28742 7.27365 7.46686 7.27365 7.76593C7.27365 8.06501 7.03436 8.24444 6.79502 8.24444Z"
+                                                    fill="#545454" />
+                                            </svg>
+                                        </div>
+                                        <span class="draft draft_stage"
+                                            t-on-click="(e) => this.draft_stage(e)">
+                                            Cooking
+                                        </span>
+                                        <t t-if="state.draft_count > 0">
+                                            <span
+                                                class="ms-2 px-2 fw-bold rounded kitchen_order_count">
+                                                <t t-esc="state.draft_count" />
+                                            </span>
+                                        </t>
+                                        <t t-else="">
+                                            <span
+                                                class="ms-2 px-2 fw-bold rounded kitchen_order_count">
+                                                0
+                                            </span>
+                                        </t>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="#">
+                                        <div class="icon">
+                                            <svg
+                                                viewBox="0 0 12 12"
+                                                fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <g clip-path="url(#clip0_50_195)">
+                                                    <path
+                                                        d="M8.60344 4.39644C8.40844 4.20119 8.09144 4.20119 7.89644 4.39644L5.74994 6.54269L4.85344 5.64644C4.65844 5.45119 4.34144 5.45119 4.14644 5.64644C3.95119 5.84169 3.95119 6.15819 4.14644 6.35344L5.39644 7.60344C5.49394 7.70119 5.62194 7.74994 5.74994 7.74994C5.87794 7.74994 6.00594 7.70119 6.10344 7.60344L8.60344 5.10344C8.79869 4.90819 8.79869 4.59169 8.60344 4.39644Z"
+                                                        fill="#008E06" />
+                                                    <path
+                                                        d="M11.5 5.5C11.224 5.5 11 5.724 11 6C11 8.757 8.757 11 6 11C3.243 11 1 8.757 1 6C1 3.243 3.243 1 6 1C7.34225 1 8.60225 1.5245 9.54825 2.477C9.7425 2.67325 10.0592 2.67425 10.2552 2.4795C10.4513 2.285 10.4522 1.9685 10.2577 1.7725C9.12275 0.6295 7.6105 0 6 0C2.6915 0 0 2.6915 0 6C0 9.3085 2.6915 12 6 12C9.3085 12 12 9.3085 12 6C12 5.724 11.776 5.5 11.5 5.5Z"
+                                                        fill="#008E06" />
+                                                </g>
+                                                <defs>
+                                                    <clipPath
+                                                        id="clip0_50_195">
+                                                        <rect width="12"
+                                                            height="12"
+                                                            fill="white" />
+                                                    </clipPath>
+                                                </defs>
+                                            </svg>
+                                        </div>
+                                        <span class="completed ready_stage"
+                                            t-on-click="(e) => this.ready_stage(e)">
+                                            Completed
+                                        </span>
+                                        <t t-if="state.ready_count > 0">
+                                            <span
+                                                class="ms-2 px-2 fw-bold rounded kitchen_order_count">
+                                                <t t-esc="state.ready_count" />
+                                            </span>
+                                        </t>
+                                        <t t-else="">
+                                            <span
+                                                class="ms-2 px-2 fw-bold rounded kitchen_order_count">
+                                                0
+                                            </span>
+                                        </t>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="container o_pj_dashboard">
+                        <t t-call="KitchenOrder" />
+                    </div>
+                </div>
+            </div>
+        </header>
+        <t t-call="KitchenOrder" />
+    </t>
+
+    <t t-name="KitchenOrder">
+        <section class="screen_info custom_padding_top">
+            <div class="wrapper">
+                <div class="container-fluid">
+                    <div class="row">
+                        <!-- CASE A: state.orders is an array -->
+                        <t t-if="state.orders">
+
+                            <t t-foreach="state.orders" t-as="order"
+                                t-key="order.id || order.pos_reference">
+                                <t t-if="order.state == state.stage">
+                                    <div class="col-lg-4 col-md-6 col-12">
+                                        <div class="card">
+                                            <div class="card-header bg_green">
+                                                <div class="left" style="padding-bottom:8px">
+                                                    <div class="status">
+                                                        <div style="padding:3px 7px;"
+                                                            class="container-fluid">
+                                                            <ul style="display:contents"
+                                                                class="c_white">
+                                                                <li>
+                                                                    <b>
+                                                                        <span
+                                                                            style="font-size:13px;">
+                                                                            Order Ref: <t
+                                                                                t-esc="order.pos_reference || ''" />
+                                                                            <br />
+                                                                            Table: <t
+                                                                                t-esc="order.table || ''" />
+                                                                            <br />
+                                                                            Floor: <t
+                                                                                t-esc="order.floor || ''" />
+                                                                        </span>
+                                                                    </b>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="right">
+                                                    <img
+                                                        src="pos_kitchen_screen_odoo/static/src/assets/icons/Vector-white.svg"
+                                                        alt="" />
+                                                </div>
+                                            </div>
+                                            <t t-foreach="order.lines"
+                                                t-as="line"
+                                                t-key="line">
+                                                <ul class="list-group list-group-flush">
+
+                                                    <div class="list-group-item">
+                                                        <span>
+                                                            <t
+                                                                t-esc="line.qty" /> x </span>
+                                                        <t t-esc="line.product_name" />
+                                                        <br />
+                                                        <t t-if="line.note">
+                                                            <i class="fa fa-tag fa-lg"
+                                                                role="img"
+                                                                aria-label="Note"
+                                                                title="Note" />
+                                                            <span style="font-size:14px">
+                                                                <t t-esc="line.note" />
+                                                            </span>
+                                                        </t>
+                                                    </div>
+                                                </ul>
+                                            </t>
+
+                                            <button type="button"
+                                                class="accept_order_line btn btn-primary"
+                                                t-on-click="()=>{this.completeOrder(order.kitchen_order_id)}"
+                                            >
+                                                Ready
+                                            </button>
+
+                                        </div>
+                                    </div>
+                                </t>
+                            </t>
+                        </t>
+
+
+                        <!-- CASE C: empty -->
+                        <t t-else="">
+                            <div class="col-12">
+                                <div class="alert alert-info">No orders available</div>
+                            </div>
+                        </t>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+    </t>
+</template>
