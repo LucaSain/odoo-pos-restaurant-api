@@ -21,9 +21,12 @@ services:
     ports:
       - "${ODOO_PORT}:8069"
     command: -d odoo -i base --without-demo=all
+    volumes:
+      - odoo_filestore:/var/lib/odoo  
     deploy:
       restart_policy:
         condition: on-failure
 
 volumes:
   db_data:
+  odoo_filestore:
