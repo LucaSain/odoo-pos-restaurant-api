@@ -58,10 +58,10 @@
         'point_of_sale._assets_pos': [
             'pos_kitchen_screen_odoo/static/src/js/fields_load.js',
             'pos_kitchen_screen_odoo/static/src/js/order_button.js',
+            'pos_kitchen_screen_odoo/static/src/css/printer.css',
         ],
         'web.assets_backend': [
             'pos_kitchen_screen_odoo/static/src/css/kitchen_screen.css',
-            'pos_kitchen_screen_odoo/static/src/css/printer.css',
             'pos_kitchen_screen_odoo/static/src/js/kitchen_screen.js',
             'pos_kitchen_screen_odoo/static/src/xml/kitchen_screen_templates.xml',
             'https://code.jquery.com/jquery-1.10.2.min.js',
