@@ -1,25 +1,67 @@
 @media print {
+  /* Make the page exactly the thermal printer width and no margins */
   @page {
     size: 58mm auto;
     margin: 0;
   }
 
-  /* Receipt container */
+  /* Remove any default body margins */
+  html,
+  body {
+    width: 58mm !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    -webkit-print-color-adjust: exact;
+    color-adjust: exact;
+  }
+
+  /* Receipt container — force exact width and prevent page breaks */
   .pos .pos-sale-ticket,
   .pos .pos-receipt-container,
   .pos-receipt-container .pos-sale-ticket {
     width: 58mm !important;
     max-width: 58mm !important;
     margin: 0 !important;
-    padding: 0 2mm !important; /* tiny padding so the printer doesn't clip fonts; adjust if needed */
+    padding: 2mm 2mm 2mm 2mm !important; /* small padding to avoid clipping */
     box-sizing: border-box !important;
-    font-size: 12px !important; /* adjust to taste */
+    font-size: 11px !important; /* tweak to taste */
     overflow: visible !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    -webkit-transform: none !important;
+    transform: none !important;
   }
 
-  /* Remove any body margins when printing */
-  body {
-    margin: 0 !important;
-    padding: 0 !important;
+  /* Avoid forcing extra pages from footer/header elements */
+  .pos .pos-footer,
+  .pos .pos-header,
+  .o_footer_print,
+  header,
+  footer {
+    display: none !important;
+  }
+
+  /* Make logo images scale perfectly to width */
+  .pos .pos-sale-ticket img,
+  .pos .pos-receipt-container img {
+    max-width: 54mm !important; /* slightly less than page to avoid clipping */
+    height: auto !important;
+    display: block !important;
+  }
+
+  /* Small adjustments for lines and hr to avoid extra height */
+  .pos .pos-sale-ticket hr {
+    margin: 4px 0 !important;
+    height: 1px !important;
+    border: none !important;
+    border-top: 1px dashed #000 !important;
+  }
+
+  /* Ensure no element has a huge fixed height */
+  *[style*="height: 100vh"],
+  *[style*="min-height: 100vh"] {
+    height: auto !important;
+    min-height: 0 !important;
   }
 }
