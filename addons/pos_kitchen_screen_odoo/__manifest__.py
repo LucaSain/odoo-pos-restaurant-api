@@ -43,7 +43,7 @@
     'company': 'Cybrosys Techno Solutions',
     'maintainer': 'Cybrosys Techno Solutions',
     'website': "https://www.cybrosys.com",
-    'depends': ['web','pos_restaurant'],
+    'depends': ['web','pos_restaurant', 'point_of_sale'],
     'data': [
         'security/pos_kitchen_screen_groups.xml',
         "security/ir.model.access.csv",
