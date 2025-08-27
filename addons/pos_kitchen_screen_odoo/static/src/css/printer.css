@@ -1,3 +1,25 @@
-.pos .pos-sale-ticket {
-  width: 220px;
+@media print {
+  @page {
+    size: 58mm auto;
+    margin: 0;
+  }
+
+  /* Receipt container */
+  .pos .pos-sale-ticket,
+  .pos .pos-receipt-container,
+  .pos-receipt-container .pos-sale-ticket {
+    width: 58mm !important;
+    max-width: 58mm !important;
+    margin: 0 !important;
+    padding: 0 2mm !important; /* tiny padding so the printer doesn't clip fonts; adjust if needed */
+    box-sizing: border-box !important;
+    font-size: 12px !important; /* adjust to taste */
+    overflow: visible !important;
+  }
+
+  /* Remove any body margins when printing */
+  body {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
 }
