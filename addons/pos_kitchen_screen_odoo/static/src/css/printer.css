@@ -45,7 +45,7 @@
   /* Make logo images scale perfectly to width */
   .pos .pos-sale-ticket img,
   .pos .pos-receipt-container img {
-    max-width: 54mm !important; /* slightly less than page to avoid clipping */
+    max-width: 58mm !important; /* slightly less than page to avoid clipping */
     height: auto !important;
     display: block !important;
   }
@@ -63,5 +63,18 @@
   *[style*="min-height: 100vh"] {
     height: auto !important;
     min-height: 0 !important;
+  }
+}
+
+@media print {
+  html body .pos .pos-sale-ticket,
+  html body .pos .pos-sale-ticket * {
+    font-weight: 600 !important; /* semibold */
+  }
+}
+
+@media print {
+  .pos .pos-sale-ticket .powered_by_odoo {
+    display: none !important;
   }
 }
