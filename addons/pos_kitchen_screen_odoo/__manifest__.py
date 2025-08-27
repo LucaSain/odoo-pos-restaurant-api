@@ -52,6 +52,7 @@
         "views/pos_kitchen_screen_odoo_menus.xml",
         "views/pos_order_views.xml",
         "views/product_product_views.xml",
+        'views/asset_views.xml',
     ],
     'assets': {
         'point_of_sale._assets_pos': [
@@ -60,6 +61,7 @@
         ],
         'web.assets_backend': [
             'pos_kitchen_screen_odoo/static/src/css/kitchen_screen.css',
+            'pos_kitchen_screen_odoo/static/src/css/printer.css',
             'pos_kitchen_screen_odoo/static/src/js/kitchen_screen.js',
             'pos_kitchen_screen_odoo/static/src/xml/kitchen_screen_templates.xml',
             'https://code.jquery.com/jquery-1.10.2.min.js',
