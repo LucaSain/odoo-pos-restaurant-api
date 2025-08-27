@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-    <template id="assets" name="point_of_sale assets" inherit_id="point_of_sale.assets">
+    <template id="assets" name="pos_restaurant_printing assets" inherit_id="pos_restaurant.assets">
 
         <xpath expr="." position="inside">
 
